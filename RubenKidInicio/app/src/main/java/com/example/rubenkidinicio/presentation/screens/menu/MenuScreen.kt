@@ -17,17 +17,19 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.rubenkidinicio.R
+import com.example.rubenkidinicio.ui.theme.fleurdeleah //< Importa Fuente de texto principal desde donde la declaraste
+import com.example.rubenkidinicio.ui.theme.fondosecundario //Importa color de el fondo
+import com.example.rubenkidinicio.ui.theme.botones //Importa color de el botón
 
 // Composable principal de la pantalla de menú
 @Composable
 fun MenuScreen() {
-    val backgroundColor = Color(0xFF7B1FA2) // color de fondo morado
 
     // Contenedor principal que ocupa toda la pantalla
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(backgroundColor),
+            .background(fondosecundario),
         contentAlignment = Alignment.TopCenter
     ) {
         // Columna principal con padding
@@ -44,23 +46,19 @@ fun MenuScreen() {
                     modifier = Modifier.size(50.dp)
                 )
                 Spacer(modifier = Modifier.width(8.dp)) // espacio entre logo y texto
+
                 Column {
                     Text(
-                        text = "Rubén kid",
-                        fontSize = 20.sp,
+                        text = "Rubén Kid",
+                        fontSize = 50.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFFFFD700) // dorado
-                    )
-                    Text(
-                        text = "EL LOGO VA AQUÍ",
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Medium,
-                        color = Color.White
+                        fontFamily = fleurdeleah,
+                        color = botones // dorado
                     )
                 }
             }
 
-            Spacer(modifier = Modifier.height(95.dp)) // espacio antes de las cards
+            Spacer(modifier = Modifier.height(85.dp)) // espacio antes de las cards
 
             // Lista de tarjetas (Cards) con números de ejemplo
             MenuCard("01")
@@ -78,7 +76,7 @@ fun MenuCard(number: String) {
     Card(
         onClick = { /* acción al pulsar la card */ }, // aquí puedes agregar navegación o acción
         colors = CardDefaults.cardColors(
-            containerColor = Color(0xFFFFC107) // amarillo de la card
+            containerColor = botones // amarillo de la card
         ),
         shape = RoundedCornerShape(20.dp),
         modifier = Modifier

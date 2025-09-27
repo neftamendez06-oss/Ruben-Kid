@@ -13,25 +13,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.rubenkidinicio.R
+import com.example.rubenkidinicio.ui.theme.fleurdeleah //Importa Fuente de texto principal desde donde la declaraste
+import com.example.rubenkidinicio.ui.theme.fondoprincipal //Importa color de el fondo
+import com.example.rubenkidinicio.ui.theme.botones //Importa color de el botón
 
 // Composable de la pantalla de bienvenida
 // Recibe una lambda onNavigateToMenu que se ejecuta cuando se presiona el botón
 @Composable
 fun WelcomeScreen(onNavigateToMenu: () -> Unit) {
 
-    // Definimos colores que se usarán en la pantalla
-    val backgroundColor = Color(0xFF1E1E90) // azul de fondo
-    val goldColor = Color(0xFFFFD700)       // color dorado para el texto principal
-    val yellowColor = Color(0xFFFFC107)     // color amarillo para el botón
-
     // Contenedor principal que ocupa toda la pantalla y centra el contenido
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(backgroundColor),
+            .background(fondoprincipal),
         contentAlignment = Alignment.Center
     ) {
         // Columna para organizar los elementos verticalmente
@@ -41,34 +40,27 @@ fun WelcomeScreen(onNavigateToMenu: () -> Unit) {
             Image(
                 painter = painterResource(id = R.drawable.icon),
                 contentDescription = "Logo Rubén Kid",
-                modifier = Modifier.size(120.dp)
+                modifier = Modifier.size(140.dp)
             )
 
-            Spacer(modifier = Modifier.height(16.dp)) // espacio entre logo y texto
+            Spacer(modifier = Modifier.height(1.dp)) // espacio entre logo y texto
 
             // Título principal
             Text(
                 text = "Rubén Kid",
-                fontSize = 32.sp,
+                fontSize = 90.sp,
                 fontWeight = FontWeight.Bold,
-                color = goldColor
+                fontFamily = fleurdeleah,
+                color = botones // dorado
             )
 
-            // Subtítulo o descripción
-            Text(
-                text = "EL LOGO VA AQUÍ",
-                fontSize = 14.sp,
-                fontWeight = FontWeight.Medium,
-                color = Color.White
-            )
-
-            Spacer(modifier = Modifier.height(40.dp)) // espacio antes del botón
+            Spacer(modifier = Modifier.height(35.dp)) // espacio antes del botón
 
             // Botón de "INICIO" que navega a la pantalla de menú
             Button(
                 onClick = { onNavigateToMenu() }, // llama a la lambda para navegar
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = yellowColor,
+                    containerColor = botones,
                     contentColor = Color.White
                 ),
                 shape = RoundedCornerShape(20.dp),
@@ -85,3 +77,9 @@ fun WelcomeScreen(onNavigateToMenu: () -> Unit) {
         }
     }
 }
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun WelcomeScreenPreview() {
+    WelcomeScreen(onNavigateToMenu = {})
+}
+

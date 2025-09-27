@@ -16,15 +16,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp as sp1
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.rubenkidinicio.R
 import kotlinx.coroutines.delay
+import com.example.rubenkidinicio.ui.theme.fleurdeleah //< Importa Fuente de texto principal desde donde la declaraste
+import com.example.rubenkidinicio.ui.theme.fondoprincipal //Importa color de azul de fondo principal
 
 @Composable
 fun SplashScreen(navController: NavHostController) {
-    val backgroundColor = Color(0xFF1E1E90) // azul oscuro
 
     // Espera 2.5 segundos y navega a la pantalla Welcome
     LaunchedEffect(Unit) {
@@ -37,31 +39,33 @@ fun SplashScreen(navController: NavHostController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(backgroundColor),
+            .background(fondoprincipal),
         contentAlignment = Alignment.Center
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Image(
                 painter = painterResource(id = R.drawable.icon), // tu logo en drawable
                 contentDescription = "Logo Rubén Kid",
-                modifier = Modifier.size(120.dp)
+                modifier = Modifier.size(140.dp)
             )
+            Spacer(modifier = Modifier.height(8.dp))
 
-            Spacer(modifier = Modifier.height(16.dp))
-
+            // Título principal
             Text(
-                text = "Rubén kid",
-                fontSize = 32.sp1,
+                text = "Rubén Kid",
+                fontSize = 90.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFFFFD700) // dorado
-            )
-
-            Text(
-                text = "EL LOGO VA AQUÍ",
-                fontSize = 14.sp1,
-                fontWeight = FontWeight.Medium,
-                color = Color.White
+                fontFamily = fleurdeleah,
+                color = Color(0xFFFDBB3E) // dorado
             )
         }
     }
+}
+//Utilizo este codigo para visulizar el splash de la app "usa NavHostController" @neftali
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun SplashScreenPreview() {
+    // Usamos un "NavContrxcoller" falso para la preview
+    val fakeNavController = androidx.navigation.compose.rememberNavController()
+    SplashScreen(navController = fakeNavController)
 }
