@@ -1,5 +1,6 @@
 package com.example.rubenkidinicio.presentation.screens.menu
 
+
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -18,18 +19,22 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.rubenkidinicio.R
 import com.example.rubenkidinicio.ui.theme.fleurdeleah //< Importa Fuente de texto principal desde donde la declaraste
-import com.example.rubenkidinicio.ui.theme.fondosecundario //Importa color de el fondo
 import com.example.rubenkidinicio.ui.theme.botones //Importa color de el botón
+import com.example.rubenkidinicio.ui.theme.fondoprincipal
 
 // Composable principal de la pantalla de menú
 @Composable
-fun MenuScreen() {
+fun MenuScreen(
+               onNavigateToStory1: () -> Unit = {},
+               onNavigateToStory2: () -> Unit = {},
+               onNavigateToStory3: () -> Unit = {}
+) {
 
     // Contenedor principal que ocupa toda la pantalla
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(fondosecundario),
+            .background(fondoprincipal),
         contentAlignment = Alignment.TopCenter
     ) {
         // Columna principal con padding
@@ -49,9 +54,8 @@ fun MenuScreen() {
 
                 Column {
                     Text(
-                        text = "Rubén Kid",
+                        text = "Rubén kid",
                         fontSize = 50.sp,
-                        fontWeight = FontWeight.Bold,
                         fontFamily = fleurdeleah,
                         color = botones // dorado
                     )
@@ -61,20 +65,20 @@ fun MenuScreen() {
             Spacer(modifier = Modifier.height(85.dp)) // espacio antes de las cards
 
             // Lista de tarjetas (Cards) con números de ejemplo
-            MenuCard("01")
+            MenuCard("El Nacimiento de la Col",onClick = onNavigateToStory1)
             Spacer(modifier = Modifier.height(16.dp))
-            MenuCard("02")
+            MenuCard("El linchamiento de puck",onClick = onNavigateToStory2)
             Spacer(modifier = Modifier.height(16.dp))
-            MenuCard("03")
+            MenuCard("El palacio del sol",onClick = onNavigateToStory3)
         }
     }
 }
 
 // Composable para cada Card del menú
 @Composable
-fun MenuCard(number: String) {
+fun MenuCard(number: String, onClick: () -> Unit = {}) {
     Card(
-        onClick = { /* acción al pulsar la card */ }, // aquí puedes agregar navegación o acción
+        onClick = onClick, // aquí puedes agregar navegación o acción
         colors = CardDefaults.cardColors(
             containerColor = botones // amarillo de la card
         ),

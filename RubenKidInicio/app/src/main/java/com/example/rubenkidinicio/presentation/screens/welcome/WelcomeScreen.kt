@@ -47,9 +47,8 @@ fun WelcomeScreen(onNavigateToMenu: () -> Unit) {
 
             // Título principal
             Text(
-                text = "Rubén Kid",
+                text = "Rubén kid",
                 fontSize = 90.sp,
-                fontWeight = FontWeight.Bold,
                 fontFamily = fleurdeleah,
                 color = botones // dorado
             )

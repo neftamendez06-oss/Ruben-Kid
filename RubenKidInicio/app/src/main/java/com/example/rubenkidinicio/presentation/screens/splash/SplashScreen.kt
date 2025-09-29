@@ -52,9 +52,8 @@ fun SplashScreen(navController: NavHostController) {
 
             // Título principal
             Text(
-                text = "Rubén Kid",
+                text = "Rubén kid",
                 fontSize = 90.sp,
-                fontWeight = FontWeight.Bold,
                 fontFamily = fleurdeleah,
                 color = Color(0xFFFDBB3E) // dorado
             )
