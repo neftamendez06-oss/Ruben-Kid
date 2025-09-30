@@ -12,16 +12,18 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.rubenkidinicio.R
 import com.example.rubenkidinicio.ui.theme.fleurdeleah //< Importa Fuente de texto principal desde donde la declaraste
 import com.example.rubenkidinicio.ui.theme.botones //Importa color de el botón
 import com.example.rubenkidinicio.ui.theme.fondoprincipal
-
+import com.example.rubenkidinicio.ui.theme.poppinsextrabold
 // Composable principal de la pantalla de menú
 @Composable
 fun MenuScreen(
@@ -54,7 +56,7 @@ fun MenuScreen(
 
                 Column {
                     Text(
-                        text = "Rubén kid",
+                        text = "RubénKid",
                         fontSize = 50.sp,
                         fontFamily = fleurdeleah,
                         color = botones // dorado
@@ -65,43 +67,56 @@ fun MenuScreen(
             Spacer(modifier = Modifier.height(85.dp)) // espacio antes de las cards
 
             // Lista de tarjetas (Cards) con números de ejemplo
-            MenuCard("El Nacimiento de la Col",onClick = onNavigateToStory1)
-            Spacer(modifier = Modifier.height(16.dp))
-            MenuCard("El linchamiento de puck",onClick = onNavigateToStory2)
-            Spacer(modifier = Modifier.height(16.dp))
-            MenuCard("El palacio del sol",onClick = onNavigateToStory3)
+            MenuCard("El NACIMIENTO DE LA COL", R.drawable.col, onClick = onNavigateToStory1)
+            Spacer(modifier = Modifier.height(25.dp))
+            MenuCard("El LINCHAMIENTO DE PUCK",R.drawable.puck, onClick = onNavigateToStory2)
+            Spacer(modifier = Modifier.height(25.dp))
+            MenuCard("EL PALACIO DE EL SOL", R.drawable.palacio, onClick = onNavigateToStory3)
         }
     }
 }
 
 // Composable para cada Card del menú
 @Composable
-fun MenuCard(number: String, onClick: () -> Unit = {}) {
+fun MenuCard(title: String, imageRes: Int, onClick: () -> Unit = {}) {
     Card(
-        onClick = onClick, // aquí puedes agregar navegación o acción
-        colors = CardDefaults.cardColors(
-            containerColor = botones // amarillo de la card
-        ),
-        shape = RoundedCornerShape(20.dp),
+        onClick = onClick,
+        colors = CardDefaults.cardColors(containerColor = botones),
+        shape = RoundedCornerShape(30.dp),
         modifier = Modifier
-            .fillMaxWidth(0.8f) // ocupa el 80% del ancho
-            .height(200.dp)
+            .fillMaxWidth(0.9f)
+            .height(180.dp)
     ) {
-        // Contenedor centrado dentro de la Card
-        Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ) {
-            // Número mostrado en la Card
-            Text(
-                text = number,
-                fontSize = 22.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color.White
-            )
+            Row(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(8.dp),
+                verticalAlignment =  Alignment.CenterVertically
+            )   {
+                Image(
+                    painter = painterResource(id = imageRes),
+                    contentDescription = title,
+                    modifier = Modifier
+                        .clip( shape = RoundedCornerShape(20.dp))
+                        .fillMaxHeight()
+                )
+                //Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = title,
+                    fontSize = 22.sp,
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center,
+                    fontFamily = poppinsextrabold,
+                    modifier = Modifier
+                        .padding(8.dp)
+                        . weight (0.5f)
+
+
+                )
+            }
         }
     }
-}
 
 // Preview para ver la pantalla en Android Studio
 @Preview(showBackground = true)

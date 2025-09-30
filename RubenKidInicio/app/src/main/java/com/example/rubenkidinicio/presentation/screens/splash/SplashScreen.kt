@@ -52,7 +52,7 @@ fun SplashScreen(navController: NavHostController) {
 
             // Título principal
             Text(
-                text = "Rubén kid",
+                text = "RubénKid",
                 fontSize = 90.sp,
                 fontFamily = fleurdeleah,
                 color = Color(0xFFFDBB3E) // dorado

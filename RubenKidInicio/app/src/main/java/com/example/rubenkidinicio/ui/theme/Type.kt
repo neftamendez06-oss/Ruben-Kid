@@ -25,6 +25,9 @@ val Typography = Typography(
 val fleurdeleah = FontFamily(
     Font(R.font.fleurdeleah)
 )
+val poppinsextrabold = FontFamily(
+    Font(R.font.poppinsextrabold)
+)
 
         /* Other default text styles to override
         titleLarge = TextStyle(

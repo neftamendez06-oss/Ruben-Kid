@@ -47,7 +47,7 @@ fun WelcomeScreen(onNavigateToMenu: () -> Unit) {
 
             // Título principal
             Text(
-                text = "Rubén kid",
+                text = "RubénKid",
                 fontSize = 90.sp,
                 fontFamily = fleurdeleah,
                 color = botones // dorado
